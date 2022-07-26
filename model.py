@@ -98,7 +98,7 @@ class Event(db.Model):
             f"event_id = {self.event_id}\n"
             f"user_id = {self.user_id}\n"
             f"event_location_id = {self.event_location_id}\n"
-            f"event_type-{self.event_type_id}\n"
+            f"event_type = {self.event_type_id}\n"
             f"event_name = {self.name}\n"
             f"start_date = {self.start_date}\n"
             f"end_date = {self.end_date}\n"
@@ -113,7 +113,6 @@ test_user_location = User_Location(
     latitude="123456.123"
 )
 db.session.add(test_user_location)
-db.session.commit()
 
 # Testing User ######
 test_user = User(
@@ -125,13 +124,20 @@ test_user = User(
     user_location_id=test_user_location
 )
 db.session.add(test_user)
-db.session.commit()
+
 
 # Testing User_Event ######
 test_user_event = User_Event(
     user_id=test_user, attending="True"
 )
 db.session.add(test_user_event)
+
+# Testing Event ######
+test_event = Event(
+    user_id=test_user,
+    event_location_id=test_event_location
+    event_type=)
+
 db.session.commit()
 
 """Database Connection"""
