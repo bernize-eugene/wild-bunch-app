@@ -18,10 +18,10 @@ class User(db.Model):
     phone = db.Column(db.String)
     username = db.Column(db.String)
     password = db.Column(db.String)
-    # user_location_id = db.Column(
-    #     db.Integer, db.ForeignKey("user_location.user_location_id"))
-    # user_event_id = db.Column(
-    #     db.Integer, db.ForeignKey("user_event.user_event_id"))
+    user_location_id = db.Column(
+        db.Integer, db.ForeignKey("user_location.user_location_id"))
+    user_event_id = db.Column(
+        db.Integer, db.ForeignKey("user_event.user_event_id"))
 
     def __repr__(self):
         return (
@@ -32,8 +32,8 @@ class User(db.Model):
             f"phone = {self.phone}\n"
             f"username = {self.username}\n"
             f"password = {self.password}\n"
-            # f"{self.user_location_id}\n"
-            # f"user_event_id = {self.user_event_id}"
+            f"user_location_id = {self.user_location_id}\n"
+            f"user_event_id = {self.user_event_id}"
         )
 
 
@@ -64,7 +64,7 @@ class User_Event(db.Model):
     user_event_id = db.Column(
         db.Integer, autoincrement=True, primary_key=True
     )
-    # event_id = db.Column(db.Integer, db.ForeignKey("events.event_id"))
+    event_id = db.Column(db.Integer, db.ForeignKey("events.event_id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     attending = db.Column(db.Boolean)
 
@@ -83,31 +83,31 @@ class Event(db.Model):
 
     event_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    # event_location_id = db.Column(
-    #     db.Integer, db.ForeignKey("event_location.event_location_id"))
-    # event_type = db.Column(
-    #     db.Integer, db.ForeignKey("event_types.event_type_id"))
+    event_location_id = db.Column(
+        db.Integer, db.ForeignKey("event_location.event_location_id"))
+    event_type_id = db.Column(
+        db.Integer, db.ForeignKey("event_types.event_type_id"))
     event_name = db.Column(db.String)
-    # start_date = db.Column(db.DateTime)
-    # end_date = db.Column(db.DateTime)
-    # start_time = db.Column(db.DateTime)
-    # end_time = db.Column(db.DateTime)
-    # description = db.Column(db.Text)
-    # url_graphic = db.Column(db.String)
+    start_date = db.Column(db.DateTime)
+    end_date = db.Column(db.DateTime)
+    start_time = db.Column(db.DateTime)
+    end_time = db.Column(db.DateTime)
+    description = db.Column(db.Text)
+    url_graphic = db.Column(db.String)
 
     def __repr__(self):
         return (
             f"event_id = {self.event_id}\n"
             f"user_id = {self.user_id}\n"
-            # f"event_location_id = {self.event_location_id}\n"
-            # f"event_type = {self.event_type_id}\n"
-            f"event_name = {self.event_name}"
-            # f"start_date = {self.start_date}\n"
-            # f"end_date = {self.end_date}\n"
-            # f"start_time = {self.start_time}\n"
-            # f"end_time = {self.end_time}\n"
-            # f"description = {self.description}\n"
-            # f"url_graphic = {self.url_graphic}"
+            f"event_location_id = {self.event_location_id}\n"
+            f"event_type_id = {self.event_type}\n"
+            f"event_name = {self.event_name}\n"
+            f"start_date = {self.start_date}\n"
+            f"end_date = {self.end_date}\n"
+            f"start_time = {self.start_time}\n"
+            f"end_time = {self.end_time}\n"
+            f"description = {self.description}\n"
+            f"url_graphic = {self.url_graphic}"
         )
 
 
@@ -139,8 +139,8 @@ class Event_Type(db.Model):
 
     def __repr__(self):
         return (
-            f"event type id = {self.event_type_id}\n"
-            f"type name = {self.type_name}"
+            f"event_type_id = {self.event_type_id}\n"
+            f"type_name = {self.type_name}"
         )
 
 
